@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import model.BaseDados;
 import model.Usuario;
+import view.TelaAdministrador;
 import view.TelaLogin;
 import view.TelaMensagem;
 
@@ -21,6 +22,10 @@ public class ControllerTelaLogin implements ActionListener {
 					
 					if (user.getTipo().equalsIgnoreCase("ADM")) {
 						TelaMensagem.mensagem("Logado com sucesso!");
+						tl.setVisible(false);
+						TelaAdministrador ta = new TelaAdministrador(tl, user);
+						ControllerTelaAdministrador cta = new ControllerTelaAdministrador(ta);
+						
 					}
 					
 //					if (user.getTipo().equalsIgnoreCase("Cliente")) {
