@@ -9,7 +9,7 @@ import view.TelaAdministrador;
 import view.TelaLogin;
 import view.TelaMensagem;
 
-public class ControllerTelaLogin implements ActionListener {
+public class ControllerTelaLogin{
 
 	public ControllerTelaLogin(TelaLogin tl) {
 		
@@ -41,12 +41,6 @@ public class ControllerTelaLogin implements ActionListener {
 		});
 		
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-	}
-	
 	
 	
 }
