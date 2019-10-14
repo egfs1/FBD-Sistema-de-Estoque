@@ -11,18 +11,23 @@ public class Cliente extends Usuario {
 		super(login, senha, "Cliente");
 	}
 	
-	public String dadosPedidos() {
-		String s="  =-=-=-=-= Pedidos =-=-=-=-=  \n";
+	public String [][] dadosPedidos() {
+		String[][] s = new String[pedidos.size()][3];
 		
+		int contador = 0;
 		for (Pedido p: pedidos) {
-			s += p.toString();
+			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getId());
+			contador++;
+			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getQnt());
+			contador++;
+			s[pedidos.indexOf(p)][contador] = String.valueOf(this.getLogin());
+			contador=0;
 		}
-		
-		if (s.equals("  =-=-=-=-= Pedidos =-=-=-=-=  \n"))
-			s = "=-= Nenhum Pedido Realizado =-=";
 		
 		return s;
 	}
+	
+	
 	
 	public void addPedidos(Pedido pedido) {
 		pedidos.add(pedido);

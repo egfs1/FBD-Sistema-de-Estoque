@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class TelaCadastrarUsuario extends JFrame {
 
@@ -27,6 +28,7 @@ public class TelaCadastrarUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 225, 296);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -40,7 +42,7 @@ public class TelaCadastrarUsuario extends JFrame {
 		
 		lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblLogin.setBounds(10, 45, 105, 19);
+		lblLogin.setBounds(10, 36, 105, 19);
 		contentPane.add(lblLogin);
 		
 		lblSenha = new JLabel("Senha");
@@ -49,25 +51,28 @@ public class TelaCadastrarUsuario extends JFrame {
 		contentPane.add(lblSenha);
 		
 		fieldLogin = new JTextField();
-		fieldLogin.setBounds(58, 46, 119, 20);
+		fieldLogin.setBounds(10, 55, 199, 27);
 		contentPane.add(fieldLogin);
 		fieldLogin.setColumns(10);
 		
 		fieldSenha = new JTextField();
-		fieldSenha.setBounds(58, 84, 119, 20);
+		fieldSenha.setBounds(10, 100, 199, 27);
 		contentPane.add(fieldSenha);
 		fieldSenha.setColumns(10);
 		
 		rdbtnCliente = new JRadioButton("Cliente", true);
-		rdbtnCliente.setBounds(10, 119, 81, 23);
+		rdbtnCliente.setBackground(Color.WHITE);
+		rdbtnCliente.setBounds(10, 127, 81, 23);
 		contentPane.add(rdbtnCliente);
 		
 		rdbtnCaixa = new JRadioButton("Caixa");
-		rdbtnCaixa.setBounds(12, 156, 109, 23);
+		rdbtnCaixa.setBackground(Color.WHITE);
+		rdbtnCaixa.setBounds(12, 163, 109, 23);
 		contentPane.add(rdbtnCaixa);
 		
 		rdbtnFornecedor = new JRadioButton("Fornecedor");
-		rdbtnFornecedor.setBounds(12, 193, 109, 23);
+		rdbtnFornecedor.setBackground(Color.WHITE);
+		rdbtnFornecedor.setBounds(12, 200, 109, 23);
 		contentPane.add(rdbtnFornecedor);
 		
 		ButtonGroup bg = new ButtonGroup();
@@ -76,6 +81,7 @@ public class TelaCadastrarUsuario extends JFrame {
 		bg.add(rdbtnFornecedor);
 		
 		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBackground(Color.WHITE);
 		btnCadastrar.setBounds(59, 232, 97, 23);
 		contentPane.add(btnCadastrar);
 		

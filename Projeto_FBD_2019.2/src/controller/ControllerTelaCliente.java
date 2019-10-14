@@ -3,15 +3,14 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.BaseDados;
 import view.TelaCliente;
-import view.TelaEstoque;
-import view.TelaPedidos;
+import view.TelaTable;
 import view.TelaRealizarPedido;
 
 public class ControllerTelaCliente {
 	
-	private TelaEstoque te;
-	private TelaPedidos tp;
+	private TelaTable te, tp;
 	private TelaRealizarPedido trp;
 	private ControllerTelaPedido ctp;
 	
@@ -19,8 +18,8 @@ public class ControllerTelaCliente {
 	
 	public ControllerTelaCliente(TelaCliente tcl) {
 		
-		te = new TelaEstoque();
-		tp = new TelaPedidos(tcl.getCliente().dadosPedidos());
+		te = new TelaTable(BaseDados.dadosEstoque(), BaseDados.colunasEstoque(), "Estoque");
+		tp = new TelaTable(tcl.getCliente().dadosPedidos(), BaseDados.colunasPedido(), "Pedidos");
 		
 		trp = new TelaRealizarPedido(tcl.getCliente());
 		ctp = new ControllerTelaPedido(trp);
@@ -39,7 +38,7 @@ public class ControllerTelaCliente {
 			
 			public void actionPerformed(ActionEvent e) {
 				te.dispose();
-				te = new TelaEstoque();
+				te = new TelaTable(BaseDados.dadosEstoque(), BaseDados.colunasEstoque(), "Estoque");
 				te.setVisible(true);
 			}
 		});
@@ -58,7 +57,7 @@ public class ControllerTelaCliente {
 			
 			public void actionPerformed(ActionEvent e) {
 				tp.dispose();
-				tp = new TelaPedidos(tcl.getCliente().dadosPedidos());
+				tp = new TelaTable(tcl.getCliente().dadosPedidos(), BaseDados.colunasPedido(), "Pedidos");
 				tp.setVisible(true);
 			}
 		});

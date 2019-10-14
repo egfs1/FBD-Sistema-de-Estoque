@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class TelaRealizarPedido extends JFrame {
 
@@ -28,6 +29,7 @@ public class TelaRealizarPedido extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 225, 215);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -37,9 +39,9 @@ public class TelaRealizarPedido extends JFrame {
 		lblRealizarPedido.setBounds(58, 11, 118, 14);
 		contentPane.add(lblRealizarPedido);
 		
-		JLabel lblId = new JLabel("ID");
+		JLabel lblId = new JLabel("ID do Produto");
 		lblId.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblId.setBounds(10, 59, 46, 14);
+		lblId.setBounds(10, 45, 118, 14);
 		contentPane.add(lblId);
 		
 		JLabel lblQnt = new JLabel("Qnt");
@@ -48,16 +50,17 @@ public class TelaRealizarPedido extends JFrame {
 		contentPane.add(lblQnt);
 		
 		fieldId = new JTextField();
-		fieldId.setBounds(48, 58, 46, 20);
+		fieldId.setBounds(10, 62, 199, 27);
 		contentPane.add(fieldId);
 		fieldId.setColumns(10);
 		
 		fieldQnt = new JTextField();
-		fieldQnt.setBounds(48, 88, 46, 20);
+		fieldQnt.setBounds(10, 108, 199, 27);
 		contentPane.add(fieldQnt);
 		fieldQnt.setColumns(10);
 		
 		btnComprar = new JButton("Comprar");
+		btnComprar.setBackground(Color.WHITE);
 		btnComprar.setBounds(58, 152, 89, 23);
 		contentPane.add(btnComprar);
 		setLocationRelativeTo(null);

@@ -1,20 +1,18 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import model.Administrador;
-import model.Usuario;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaAdministrador extends JFrame {
 	
@@ -36,6 +34,7 @@ public class TelaAdministrador extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 179, 402);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -53,48 +52,59 @@ public class TelaAdministrador extends JFrame {
 		contentPane.add(lblUsuario);
 		
 		btnVisualizarEstoque = new JButton("Visualizar Estoque");
-		btnVisualizarEstoque.setBounds(10, 61, 143, 23);
+		btnVisualizarEstoque.setBackground(Color.WHITE);
+		btnVisualizarEstoque.setBounds(10, 61, 153, 23);
 		contentPane.add(btnVisualizarEstoque);
 		
 		btnCadastrarProduto = new JButton("Cadastrar Produto");
+		btnCadastrarProduto.setBackground(Color.WHITE);
 		btnCadastrarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnCadastrarProduto.setBounds(10, 240, 143, 23);
+		btnCadastrarProduto.setBounds(10, 240, 153, 23);
 		contentPane.add(btnCadastrarProduto);
 		
 		btnCadastrarCliente = new JButton("Cadastrar Usuario");
+		btnCadastrarCliente.setBackground(Color.WHITE);
 		btnCadastrarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCadastrarCliente.setBounds(10, 274, 143, 23);
+		btnCadastrarCliente.setBounds(10, 274, 153, 23);
 		contentPane.add(btnCadastrarCliente);
 		
 		btnVisualizarPedidos = new JButton("Visualizar Pedidos");
-		btnVisualizarPedidos.setBounds(10, 91, 143, 23);
+		btnVisualizarPedidos.setBackground(Color.WHITE);
+		btnVisualizarPedidos.setBounds(10, 91, 153, 23);
 		contentPane.add(btnVisualizarPedidos);
 		
 		btnComprarProduto = new JButton("Comprar Produto");
+		btnComprarProduto.setBackground(Color.WHITE);
 		btnComprarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnComprarProduto.setBounds(10, 185, 143, 23);
+		btnComprarProduto.setBounds(10, 185, 153, 23);
 		contentPane.add(btnComprarProduto);
 		
 		btnDeslogar = new JButton("Deslogar");
-		btnDeslogar.setBounds(32, 339, 89, 23);
+		btnDeslogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnDeslogar.setBackground(Color.WHITE);
+		btnDeslogar.setBounds(41, 339, 89, 23);
 		contentPane.add(btnDeslogar);
 		
 		btnVisualizarCompras = new JButton("Visualizar Compras");
-		btnVisualizarCompras.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnVisualizarCompras.setBackground(Color.WHITE);
+		btnVisualizarCompras.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnVisualizarCompras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnVisualizarCompras.setBounds(10, 122, 143, 23);
+		btnVisualizarCompras.setBounds(10, 122, 153, 23);
 		contentPane.add(btnVisualizarCompras);
 		
 		setVisible(true);
@@ -189,7 +199,4 @@ public class TelaAdministrador extends JFrame {
 	public void setBtnVisualizarCompras(JButton btnVisualizarCompras) {
 		this.btnVisualizarCompras = btnVisualizarCompras;
 	}
-
-	
-	
 }

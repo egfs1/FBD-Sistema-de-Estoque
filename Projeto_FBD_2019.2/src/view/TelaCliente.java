@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import model.Cliente;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaCliente extends JFrame {
 
@@ -32,6 +33,7 @@ public class TelaCliente extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 179, 306);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -49,23 +51,27 @@ public class TelaCliente extends JFrame {
 		contentPane.add(lblUsuario);
 		
 		btnDeslogar = new JButton("Deslogar");
+		btnDeslogar.setBackground(Color.WHITE);
 		btnDeslogar.setBounds(41, 243, 89, 23);
 		contentPane.add(btnDeslogar);
 		
 		btnVisualizarEstoque = new JButton("Visualizar Estoque");
-		btnVisualizarEstoque.setBounds(20, 58, 133, 23);
+		btnVisualizarEstoque.setBackground(Color.WHITE);
+		btnVisualizarEstoque.setBounds(10, 58, 153, 23);
 		contentPane.add(btnVisualizarEstoque);
 		
 		btnRealizarPedido = new JButton("Realizar Pedido");
+		btnRealizarPedido.setBackground(Color.WHITE);
 		btnRealizarPedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnRealizarPedido.setBounds(20, 153, 133, 23);
+		btnRealizarPedido.setBounds(10, 153, 153, 23);
 		contentPane.add(btnRealizarPedido);
 		
 		btnVisualizarPedidos = new JButton("Visualizar Pedidos");
-		btnVisualizarPedidos.setBounds(20, 92, 133, 23);
+		btnVisualizarPedidos.setBackground(Color.WHITE);
+		btnVisualizarPedidos.setBounds(10, 92, 153, 23);
 		contentPane.add(btnVisualizarPedidos);
 		
 		setVisible(true);

@@ -8,27 +8,23 @@ import view.TelaAdministrador;
 import view.TelaCadastrarProduto;
 import view.TelaCadastrarUsuario;
 import view.TelaComprarProduto;
-import view.TelaCompras;
-import view.TelaEstoque;
-import view.TelaPedidos;
+import view.TelaTable;
 
 public class ControllerTelaAdministrador {
 	
-	private static TelaEstoque te;
-	private TelaCompras tc;
+	private TelaTable te, tc, tp;
 	private TelaCadastrarProduto tcp;
 	private TelaCadastrarUsuario tcu;
 	private TelaComprarProduto tcop;
-	private TelaPedidos tp;
 	private ControllerCadastrarProduto ccp;
 	private ControllerCadastrarUsuario ccu;
 	private ControllerComprarProduto ccop;
 	
 	public ControllerTelaAdministrador(TelaAdministrador ta) {
 		
-		te = new TelaEstoque();
-		tc = new TelaCompras();
-		tp = new TelaPedidos(BaseDados.dadosPedidos());
+		te = new TelaTable(BaseDados.dadosEstoque(), BaseDados.colunasEstoque(), "Estoque");
+		tc = new TelaTable(BaseDados.dadosCompras(), BaseDados.colunasCompra(), "Compras");
+		tp = new TelaTable(BaseDados.dadosPedidos(), BaseDados.colunasPedido(), "Pedidos");
 		
 		tcp = new TelaCadastrarProduto();
 		ccp = new ControllerCadastrarProduto(tcp);
@@ -53,7 +49,7 @@ public class ControllerTelaAdministrador {
 			
 			public void actionPerformed(ActionEvent e) {
 				te.dispose();
-				te = new TelaEstoque();
+				te = new TelaTable(BaseDados.dadosEstoque(), BaseDados.colunasEstoque(), "Estoque");
 				te.setVisible(true);
 			}
 		});
@@ -62,7 +58,7 @@ public class ControllerTelaAdministrador {
 			
 			public void actionPerformed(ActionEvent e) {
 				tc.dispose();
-				tc = new TelaCompras();
+				tc = new TelaTable(BaseDados.dadosCompras(), BaseDados.colunasCompra(), "Compras");
 				tc.setVisible(true);
 			}
 		});
@@ -101,7 +97,7 @@ public class ControllerTelaAdministrador {
 			
 			public void actionPerformed(ActionEvent e) {
 				tp.dispose();
-				tp = new TelaPedidos(BaseDados.dadosPedidos());
+				tp = new TelaTable(BaseDados.dadosPedidos(), BaseDados.colunasPedido(), "Pedidos");
 				tp.setVisible(true);
 				
 				

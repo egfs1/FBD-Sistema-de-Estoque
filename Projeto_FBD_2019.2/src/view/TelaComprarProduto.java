@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaComprarProduto extends JFrame {
 
@@ -23,6 +26,7 @@ public class TelaComprarProduto extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 225, 215);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -31,41 +35,46 @@ public class TelaComprarProduto extends JFrame {
 		
 		JLabel lblComprarProduto = new JLabel("Comprar Produto");
 		lblComprarProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblComprarProduto.setBounds(44, 0, 111, 26);
+		lblComprarProduto.setBounds(44, -3, 111, 26);
 		contentPane.add(lblComprarProduto);
 		
-		JLabel lblId = new JLabel("ID");
+		JLabel lblId = new JLabel("ID do Produto");
 		lblId.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblId.setBounds(10, 68, 33, 14);
+		lblId.setBounds(4, 70, 147, 14);
 		contentPane.add(lblId);
 		
 		JLabel lblQnt = new JLabel("Qnt");
 		lblQnt.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblQnt.setBounds(10, 93, 46, 26);
+		lblQnt.setBounds(4, 107, 46, 26);
 		contentPane.add(lblQnt);
 		
 		JLabel lblFornecedor = new JLabel("Fornecedor");
 		lblFornecedor.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFornecedor.setBounds(10, 37, 73, 14);
+		lblFornecedor.setBounds(4, 25, 73, 14);
 		contentPane.add(lblFornecedor);
 		
 		fieldQnt = new JTextField();
-		fieldQnt.setBounds(44, 98, 39, 20);
+		fieldQnt.setBounds(4, 131, 205, 27);
 		contentPane.add(fieldQnt);
 		fieldQnt.setColumns(10);
 		
 		fieldId = new JTextField();
-		fieldId.setBounds(44, 67, 39, 20);
+		fieldId.setBounds(4, 85, 205, 27);
 		contentPane.add(fieldId);
 		fieldId.setColumns(10);
 		
 		fieldFornecedor = new JTextField();
-		fieldFornecedor.setBounds(93, 37, 73, 20);
+		fieldFornecedor.setBounds(4, 41, 205, 27);
 		contentPane.add(fieldFornecedor);
 		fieldFornecedor.setColumns(10);
 		
 		btnComprar = new JButton("Comprar");
-		btnComprar.setBounds(54, 142, 89, 23);
+		btnComprar.setBackground(Color.WHITE);
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnComprar.setBounds(62, 160, 89, 23);
 		contentPane.add(btnComprar);
 		
 		setVisible(false);

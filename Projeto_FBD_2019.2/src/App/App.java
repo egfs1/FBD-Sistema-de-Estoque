@@ -1,5 +1,8 @@
 package App;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import controller.ControllerTelaLogin;
 import model.Administrador;
 import model.BaseDados;
@@ -9,6 +12,16 @@ import view.TelaLogin;
 public class App {
 	
 	public static void main(String[] args) {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Administrador u1 = new Administrador("admin", "admin");
 		BaseDados.addUsuario(u1);
 		TelaLogin tl = new TelaLogin();

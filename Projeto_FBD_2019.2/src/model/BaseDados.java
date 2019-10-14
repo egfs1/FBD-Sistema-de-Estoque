@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.List;
 import java.util.ArrayList;
 
 import controller.ControllerTelaAdministrador;
@@ -67,45 +68,70 @@ public class BaseDados {
 		return null;
 	}
 	
-	public static String dadosEstoque() {
-		String s ="  =-=-=-=-=-= Estoque =-=-=-=-=-=  \n";
+	public static String[][] dadosEstoque() {
+		String[][] s = new String[estoque.size()][3];
 		
+		int contador = 0;
 		for (Produto p: estoque) {
-			s += p.toString();
+			s[estoque.indexOf(p)][contador] = p.getNome();
+			contador++;
+			s[estoque.indexOf(p)][contador] = String.valueOf(p.getId());
+			contador++;
+			s[estoque.indexOf(p)][contador] = String.valueOf(p.getQnt());
+			contador=0;
+			
 		}
-		
-		if (s.equals("  =-=-=-=-=-= Estoque =-=-=-=-=-=  \n"))
-			s = "  =-=-=-=-= Estoque Vazio =-=-=-=-=  ";
 		
 		return s;
 	}
 	
-	public static String dadosCompras() {
-		String s="  =-=-=-=-= Compras =-=-=-=-=  \n";
+	public static String[] colunasEstoque() {
+		String []s = {"Nome", "ID", "Qnt"};
+		return s;
+	}
+	
+	public static String [][] dadosCompras() {
+		String[][] s = new String[compras.size()][3];
 		
+		int contador = 0;
 		for (Compra c: compras) {
-			s += c.toString();
+			s[compras.indexOf(c)][contador] = String.valueOf(c.getId());
+			contador++;
+			s[compras.indexOf(c)][contador] = String.valueOf(c.getQnt());
+			contador++;
+			s[compras.indexOf(c)][contador] = String.valueOf(c.getFornecedor().getLogin());
+			contador=0;
 		}
-		
-		if (s.equals("  =-=-=-=-= Compras =-=-=-=-=  \n"))
-			s = "=-= Nenhuma Compra Realizada =-=";
 		
 		return s;
 		
 	}
 	
-	public static String dadosPedidos() {
-		String s="  =-=-=-=-= Pedidos =-=-=-=-=  \n";
+	public static String[] colunasCompra() {
+		String []s = {"ID", "Qnt", "Fornecedor"};
+		return s;
+	}
+	
+	public static String[][] dadosPedidos() {
+		String[][] s = new String[pedidos.size()][3];
 		
+		int contador = 0;
 		for (Pedido p: pedidos) {
-			s += p.toString();
+			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getId());
+			contador++;
+			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getQnt());
+			contador++;
+			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getCliente().getLogin());
+			contador=0;
 		}
-		
-		if (s.equals("  =-=-=-=-= Pedidos =-=-=-=-=  \n"))
-			s = "=-= Nenhum Pedido Realizado =-=";
 		
 		return s;
 		
+	}
+	
+	public static String[] colunasPedido() {
+		String []s = {"ID", "Qnt", "Cliente"};
+		return s;
 	}
 	
 	
