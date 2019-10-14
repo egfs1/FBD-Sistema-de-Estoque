@@ -83,7 +83,7 @@ public class TelaAdministrador extends JFrame {
 		contentPane.add(btnComprarProduto);
 		
 		btnDeslogar = new JButton("Deslogar");
-		btnDeslogar.setBounds(33, 316, 89, 23);
+		btnDeslogar.setBounds(32, 339, 89, 23);
 		contentPane.add(btnDeslogar);
 		
 		setVisible(true);
@@ -168,6 +168,7 @@ public class TelaAdministrador extends JFrame {
 	public void setBtnDeslogar(JButton btnDeslogar) {
 		this.btnDeslogar = btnDeslogar;
 	}
+
 	
 	
 }

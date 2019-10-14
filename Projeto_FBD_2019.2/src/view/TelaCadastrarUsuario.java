@@ -21,10 +21,11 @@ public class TelaCadastrarUsuario extends JFrame {
 	private JLabel lblCadastroDeUsuario, lblLogin, lblSenha;
 	private JRadioButton rdbtnCliente, rdbtnCaixa;
 	private JButton btnCadastrar;
+	private JRadioButton rdbtnFornecedor;
 
 	public TelaCadastrarUsuario() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 225, 215);
+		setBounds(100, 100, 225, 296);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,16 +63,22 @@ public class TelaCadastrarUsuario extends JFrame {
 		contentPane.add(rdbtnCliente);
 		
 		rdbtnCaixa = new JRadioButton("Caixa");
-		rdbtnCaixa.setBounds(94, 119, 109, 23);
+		rdbtnCaixa.setBounds(12, 156, 109, 23);
 		contentPane.add(rdbtnCaixa);
+		
+		rdbtnFornecedor = new JRadioButton("Fornecedor");
+		rdbtnFornecedor.setBounds(12, 193, 109, 23);
+		contentPane.add(rdbtnFornecedor);
 		
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(rdbtnCaixa);
 		bg.add(rdbtnCliente);
+		bg.add(rdbtnFornecedor);
 		
 		btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(58, 149, 97, 23);
+		btnCadastrar.setBounds(59, 232, 97, 23);
 		contentPane.add(btnCadastrar);
+		
 		
 		setVisible(false);
 	}
@@ -114,6 +121,14 @@ public class TelaCadastrarUsuario extends JFrame {
 
 	public void setBtnCadastrar(JButton btnCadastrar) {
 		this.btnCadastrar = btnCadastrar;
+	}
+
+	public JRadioButton getRdbtnFornecedor() {
+		return rdbtnFornecedor;
+	}
+
+	public void setRdbtnFornecedor(JRadioButton rdbtnFornecedor) {
+		this.rdbtnFornecedor = rdbtnFornecedor;
 	}
 	
 	

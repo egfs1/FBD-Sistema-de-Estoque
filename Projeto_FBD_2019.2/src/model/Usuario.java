@@ -2,10 +2,10 @@ package model;
 
 import view.TelaMensagem;
 
-public class Usuario {
+public abstract class Usuario {
 	
 	private String login, senha;
-	private String tipo; //ADM, Cliente, Caixa
+	private String tipo; //ADM, Cliente, Caixa, Fornecedor
 	private boolean logado=false;
 
 

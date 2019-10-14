@@ -6,15 +6,18 @@ import java.awt.event.ActionListener;
 import view.TelaAdministrador;
 import view.TelaCadastrarProduto;
 import view.TelaCadastrarUsuario;
+import view.TelaComprarProduto;
 import view.TelaEstoque;
 
 public class ControllerTelaAdministrador {
 	
-	private TelaEstoque te;
+	private static TelaEstoque te;
 	private TelaCadastrarProduto tcp;
 	private TelaCadastrarUsuario tcu;
+	private TelaComprarProduto tcop;
 	private ControllerCadastrarProduto ccp;
 	private ControllerCadastrarUsuario ccu;
+	private ControllerComprarProduto ccop;
 	
 	public ControllerTelaAdministrador(TelaAdministrador ta) {
 		
@@ -25,6 +28,9 @@ public class ControllerTelaAdministrador {
 		
 		tcu = new TelaCadastrarUsuario();
 		ccu = new ControllerCadastrarUsuario(tcu);
+		
+		tcop = new TelaComprarProduto();
+		ccop = new ControllerComprarProduto(tcop);
 		
 		
 		ta.getBtnDeslogar().addActionListener(new ActionListener() {
@@ -39,10 +45,7 @@ public class ControllerTelaAdministrador {
 		ta.getBtnVisualizarEstoque().addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				te.dispose();
-				te = new TelaEstoque();
-				te.setVisible(true);
-				
+				atualizarTelaEstoque();
 			}
 		});
 		
@@ -66,6 +69,21 @@ public class ControllerTelaAdministrador {
 			}
 		});
 		
+		ta.getBtnComprarProduto().addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				tcop.dispose();
+				tcop = new TelaComprarProduto();
+				ccop = new ControllerComprarProduto(tcop);
+				tcop.setVisible(true);
+			}
+		});
+	}
+	
+	public static void atualizarTelaEstoque() {
+		te.dispose();
+		te = new TelaEstoque();
+		te.setVisible(true);
 	}
 	
 }

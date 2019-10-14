@@ -10,7 +10,11 @@ public class Produto {
 		this.nome = nome;
 		this.id = id;
 	}
-
+	
+	public void addQnt(int qnt) {
+		this.qnt += qnt;
+	}
+	
 
 	public String getNome() {
 		return nome;

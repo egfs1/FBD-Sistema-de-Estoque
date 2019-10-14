@@ -1,6 +1,7 @@
 package App;
 
 import controller.ControllerTelaLogin;
+import model.Administrador;
 import model.BaseDados;
 import model.Usuario;
 import view.TelaLogin;
@@ -8,7 +9,7 @@ import view.TelaLogin;
 public class App {
 	
 	public static void main(String[] args) {
-		Usuario u1 = new Usuario("admin", "admin", "ADM");
+		Administrador u1 = new Administrador("admin", "admin");
 		BaseDados.addUsuario(u1);
 		TelaLogin tl = new TelaLogin();
 		ControllerTelaLogin ctl = new ControllerTelaLogin(tl);

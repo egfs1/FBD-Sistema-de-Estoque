@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import controller.ControllerTelaAdministrador;
 import view.TelaMensagem;
 
 public class BaseDados {
@@ -9,6 +10,7 @@ public class BaseDados {
 	public static ArrayList<Usuario>usuarios = new ArrayList<>();
 	public static boolean existe_adm=false;
 	public static ArrayList<Produto>estoque = new ArrayList<>();
+	public static ArrayList<Compra>compras = new ArrayList<>();
 	
 	public static boolean addUsuario(Usuario usuario) {
 		if (usuario.getTipo().equalsIgnoreCase("ADM")) {
@@ -35,6 +37,14 @@ public class BaseDados {
 		return false;
 	}
 	
+	public static boolean existeUsuario(String login) {
+		for (Usuario u: usuarios) {
+			if (u.getLogin().equalsIgnoreCase(login))
+				return true;
+		}
+		return false;
+	}
+	
 	public static Usuario buscarUsuario_login_senha(String login, String senha) {
 		for (Usuario u: usuarios) {
 			if (u.getLogin().equals(login) && u.getSenha().equals(senha)){
@@ -44,6 +54,15 @@ public class BaseDados {
 		TelaMensagem.mensagem("Login ou senha incorretos!");
 		return null;
 		
+	}
+	
+	public static Usuario buscarUsuario_login(String login) {
+		for (Usuario u: usuarios) {
+			if (u.getLogin().equals(login)) {
+				return u;
+			}
+		}
+		return null;
 	}
 	
 	public static String dadosEstoque() {
@@ -76,8 +95,39 @@ public class BaseDados {
 		Produto p = new Produto(nome, id);
 		estoque.add(p);
 		TelaMensagem.mensagem("Produto cadastrado com sucesso!");
+		ControllerTelaAdministrador.atualizarTelaEstoque();
 		return true;
 		
+	}
+	
+	public static boolean existeProduto(int id) {
+		for (Produto p: estoque) {
+			if (p.getId()==id) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean addProduto(int id, int qnt) {
+		if (existeProduto(id)) {
+			for (Produto p: estoque) {
+				if (p.getId()==id) {
+					p.addQnt(qnt);
+					TelaMensagem.mensagem("Compra realizada com sucesso!");
+					return true;
+				}
+			}
+			return false;
+		}
+		else {
+			TelaMensagem.mensagem("Esse produto não existe!");
+			return false;
+		}
+	}
+	
+	public static void addCompra(Compra compra) {
+		compras.add(compra);
 	}
 	
 }
