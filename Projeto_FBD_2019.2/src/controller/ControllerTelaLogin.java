@@ -20,22 +20,29 @@ public class ControllerTelaLogin{
 				user = BaseDados.buscarUsuario_login_senha(tl.getFieldLogin().getText(), tl.getFieldSenha().getText());
 				if (user!=null) {
 					
-					if (user.getTipo().equalsIgnoreCase("ADM")) {
-						TelaMensagem.mensagem("Logado com sucesso!");
-						tl.setVisible(false);
-						TelaAdministrador ta = new TelaAdministrador(tl, user);
-						ControllerTelaAdministrador cta = new ControllerTelaAdministrador(ta);
+					if (!user.isLogado()) {
+						if (user.getTipo().equalsIgnoreCase("ADM")) {
+							TelaMensagem.mensagem("Logado com sucesso!");
+	//						tl.setVisible(false);
+							TelaAdministrador ta = new TelaAdministrador(tl, user);
+							ControllerTelaAdministrador cta = new ControllerTelaAdministrador(ta);
+							user.setLogado(true);
+							
+						}
 						
+						if (user.getTipo().equalsIgnoreCase("Cliente")) {
+							TelaMensagem.mensagem("Logado com sucesso!");
+							user.setLogado(true);
+						}
+						
+						if (user.getTipo().equalsIgnoreCase("Caixa")) {
+							TelaMensagem.mensagem("Logado com sucesso!");
+							user.setLogado(true);
+						}
 					}
-					
-//					if (user.getTipo().equalsIgnoreCase("Cliente")) {
-//						TelaMensagem.mensagem("Logado com sucesso!");
-//					}
-					
-					if (user.getTipo().equalsIgnoreCase("Caixa")) {
-						TelaMensagem.mensagem("Logado com sucesso!");
+					else {
+						TelaMensagem.mensagem("Usuario já está logado!");
 					}
-					
 				}
 			}
 		});

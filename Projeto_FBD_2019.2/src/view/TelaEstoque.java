@@ -40,6 +40,6 @@ public class TelaEstoque extends JFrame {
 		scrollPane.setBounds(0, 0, 219, 186);
 		contentPane.add(scrollPane);
 		
-		setVisible(true);
+		setVisible(false);
 	}
 }

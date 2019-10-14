@@ -31,13 +31,14 @@ public class TelaAdministrador extends JFrame {
 		this.tl = tl;
 		this.usuario = usuario;
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 179, 402);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		
 		label = new JLabel(usuario.getLogin());
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -61,7 +62,7 @@ public class TelaAdministrador extends JFrame {
 		btnCadastrarProduto.setBounds(10, 211, 143, 23);
 		contentPane.add(btnCadastrarProduto);
 		
-		btnCadastrarCliente = new JButton("Cadastrar Cliente");
+		btnCadastrarCliente = new JButton("Cadastrar Usuario");
 		btnCadastrarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

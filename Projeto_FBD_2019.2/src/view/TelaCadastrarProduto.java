@@ -44,7 +44,7 @@ public class TelaCadastrarProduto extends JFrame {
 		
 		lblCadastrarProdutos = new JLabel("Cadastrar Produtos");
 		lblCadastrarProdutos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCadastrarProdutos.setBounds(39, 11, 132, 14);
+		lblCadastrarProdutos.setBounds(45, 11, 132, 14);
 		contentPane.add(lblCadastrarProdutos);
 		
 		fieldNome = new JTextField();
@@ -60,10 +60,10 @@ public class TelaCadastrarProduto extends JFrame {
 		fieldId.setText(s);
 		
 		btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(51, 142, 105, 23);
+		btnCadastrar.setBounds(55, 152, 105, 23);
 		contentPane.add(btnCadastrar);
 		
-		setVisible(true);
+		setVisible(false);
 	}
 
 	public JTextField getFieldNome() {

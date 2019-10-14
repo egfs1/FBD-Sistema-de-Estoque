@@ -6,6 +6,7 @@ public class Usuario {
 	
 	private String login, senha;
 	private String tipo; //ADM, Cliente, Caixa
+	private boolean logado=false;
 
 
 	public Usuario(String login, String senha, String tipo) {
@@ -36,6 +37,14 @@ public class Usuario {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public boolean isLogado() {
+		return logado;
+	}
+
+	public void setLogado(boolean logado) {
+		this.logado = logado;
 	}
 	
 	

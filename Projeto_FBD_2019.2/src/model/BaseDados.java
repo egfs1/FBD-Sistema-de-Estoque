@@ -18,8 +18,21 @@ public class BaseDados {
 			}
 			else existe_adm = true;
 		}
-		usuarios.add(usuario);
-		return true;
+		if (!existeUsuario(usuario)) {
+			usuarios.add(usuario);
+			TelaMensagem.mensagem("Usuario cadastrado com sucesso!");
+			return true;
+		}
+		TelaMensagem.mensagem("Esse Usuario já existe!");
+		return false;
+	}
+	
+	public static boolean existeUsuario(Usuario usuario) {
+		for (Usuario u: usuarios) {
+			if (u.getLogin().equalsIgnoreCase(usuario.getLogin()))
+				return true;
+		}
+		return false;
 	}
 	
 	public static Usuario buscarUsuario_login_senha(String login, String senha) {
