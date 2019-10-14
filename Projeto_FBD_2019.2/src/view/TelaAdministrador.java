@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.Administrador;
 import model.Usuario;
 
 import javax.swing.JLabel;
@@ -20,16 +21,17 @@ public class TelaAdministrador extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private TelaLogin tl;
-	private Usuario usuario;
+	private Administrador adm;
 	private JPanel contentPane;
 	private JLabel label, lblUsuario;
 	private JButton btnVisualizarEstoque, btnVisualizarPedidos, btnComprarProduto,
 					btnCadastrarProduto, btnCadastrarCliente, btnDeslogar;
+	private JButton btnVisualizarCompras;
 
 
-	public TelaAdministrador(TelaLogin tl,Usuario usuario) {
+	public TelaAdministrador(TelaLogin tl,Administrador adm) {
 		this.tl = tl;
-		this.usuario = usuario;
+		this.adm = adm;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 179, 402);
@@ -40,7 +42,7 @@ public class TelaAdministrador extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-		label = new JLabel(usuario.getLogin());
+		label = new JLabel(adm.getLogin());
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		label.setBounds(66, 11, 87, 25);
 		contentPane.add(label);
@@ -59,7 +61,7 @@ public class TelaAdministrador extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnCadastrarProduto.setBounds(10, 211, 143, 23);
+		btnCadastrarProduto.setBounds(10, 240, 143, 23);
 		contentPane.add(btnCadastrarProduto);
 		
 		btnCadastrarCliente = new JButton("Cadastrar Usuario");
@@ -67,11 +69,11 @@ public class TelaAdministrador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnCadastrarCliente.setBounds(10, 245, 143, 23);
+		btnCadastrarCliente.setBounds(10, 274, 143, 23);
 		contentPane.add(btnCadastrarCliente);
 		
 		btnVisualizarPedidos = new JButton("Visualizar Pedidos");
-		btnVisualizarPedidos.setBounds(10, 95, 143, 23);
+		btnVisualizarPedidos.setBounds(10, 91, 143, 23);
 		contentPane.add(btnVisualizarPedidos);
 		
 		btnComprarProduto = new JButton("Comprar Produto");
@@ -79,12 +81,21 @@ public class TelaAdministrador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnComprarProduto.setBounds(10, 153, 143, 23);
+		btnComprarProduto.setBounds(10, 185, 143, 23);
 		contentPane.add(btnComprarProduto);
 		
 		btnDeslogar = new JButton("Deslogar");
 		btnDeslogar.setBounds(32, 339, 89, 23);
 		contentPane.add(btnDeslogar);
+		
+		btnVisualizarCompras = new JButton("Visualizar Compras");
+		btnVisualizarCompras.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnVisualizarCompras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnVisualizarCompras.setBounds(10, 122, 143, 23);
+		contentPane.add(btnVisualizarCompras);
 		
 		setVisible(true);
 	}
@@ -100,13 +111,13 @@ public class TelaAdministrador extends JFrame {
 	}
 
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Administrador getUsuario() {
+		return adm;
 	}
 
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuario(Administrador adm) {
+		this.adm = adm;
 	}
 
 
@@ -167,6 +178,16 @@ public class TelaAdministrador extends JFrame {
 
 	public void setBtnDeslogar(JButton btnDeslogar) {
 		this.btnDeslogar = btnDeslogar;
+	}
+
+
+	public JButton getBtnVisualizarCompras() {
+		return btnVisualizarCompras;
+	}
+
+
+	public void setBtnVisualizarCompras(JButton btnVisualizarCompras) {
+		this.btnVisualizarCompras = btnVisualizarCompras;
 	}
 
 	

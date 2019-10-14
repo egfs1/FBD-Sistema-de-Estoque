@@ -3,9 +3,12 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Administrador;
 import model.BaseDados;
+import model.Cliente;
 import model.Usuario;
 import view.TelaAdministrador;
+import view.TelaCliente;
 import view.TelaLogin;
 import view.TelaMensagem;
 
@@ -23,8 +26,7 @@ public class ControllerTelaLogin{
 					if (!user.isLogado()) {
 						if (user.getTipo().equalsIgnoreCase("ADM")) {
 							TelaMensagem.mensagem("Logado com sucesso!");
-	//						tl.setVisible(false);
-							TelaAdministrador ta = new TelaAdministrador(tl, user);
+							TelaAdministrador ta = new TelaAdministrador(tl, (Administrador) user);
 							ControllerTelaAdministrador cta = new ControllerTelaAdministrador(ta);
 							user.setLogado(true);
 							
@@ -32,6 +34,8 @@ public class ControllerTelaLogin{
 						
 						if (user.getTipo().equalsIgnoreCase("Cliente")) {
 							TelaMensagem.mensagem("Logado com sucesso!");
+							TelaCliente tcl = new TelaCliente(tl, (Cliente) user);
+							ControllerTelaCliente ctc = new ControllerTelaCliente(tcl);
 							user.setLogado(true);
 						}
 						

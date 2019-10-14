@@ -11,8 +11,10 @@ public class BaseDados {
 	public static boolean existe_adm=false;
 	public static ArrayList<Produto>estoque = new ArrayList<>();
 	public static ArrayList<Compra>compras = new ArrayList<>();
+	public static ArrayList<Pedido>pedidos = new ArrayList<>();
 	
 	public static boolean addUsuario(Usuario usuario) {
+		
 		if (usuario.getTipo().equalsIgnoreCase("ADM")) {
 			if (existe_adm) {
 				TelaMensagem.mensagem("Já existe um Administrador!");
@@ -69,9 +71,7 @@ public class BaseDados {
 		String s ="  =-=-=-=-=-= Estoque =-=-=-=-=-=  \n";
 		
 		for (Produto p: estoque) {
-			s += "ID: " + p.getId() + "\n" +
-				 "Nome: " + p.getNome() + "\n" +
-				 "Qnt: " + p.getQnt() + "\n\n";
+			s += p.toString();
 		}
 		
 		if (s.equals("  =-=-=-=-=-= Estoque =-=-=-=-=-=  \n"))
@@ -79,6 +79,35 @@ public class BaseDados {
 		
 		return s;
 	}
+	
+	public static String dadosCompras() {
+		String s="  =-=-=-=-= Compras =-=-=-=-=  \n";
+		
+		for (Compra c: compras) {
+			s += c.toString();
+		}
+		
+		if (s.equals("  =-=-=-=-= Compras =-=-=-=-=  \n"))
+			s = "=-= Nenhuma Compra Realizada =-=";
+		
+		return s;
+		
+	}
+	
+	public static String dadosPedidos() {
+		String s="  =-=-=-=-= Pedidos =-=-=-=-=  \n";
+		
+		for (Pedido p: pedidos) {
+			s += p.toString();
+		}
+		
+		if (s.equals("  =-=-=-=-= Pedidos =-=-=-=-=  \n"))
+			s = "=-= Nenhum Pedido Realizado =-=";
+		
+		return s;
+		
+	}
+	
 	
 	public static boolean cadastrarProduto(String nome, int id) {
 		for (Produto produto: estoque) {
@@ -95,7 +124,7 @@ public class BaseDados {
 		Produto p = new Produto(nome, id);
 		estoque.add(p);
 		TelaMensagem.mensagem("Produto cadastrado com sucesso!");
-		ControllerTelaAdministrador.atualizarTelaEstoque();
+//		ControllerTelaAdministrador.atualizarTelaEstoque();
 		return true;
 		
 	}
@@ -128,6 +157,30 @@ public class BaseDados {
 	
 	public static void addCompra(Compra compra) {
 		compras.add(compra);
+	}
+	
+	public static boolean addPedido(Pedido pedido) {
+		if (!existeProduto(pedido.getId())) {
+			TelaMensagem.mensagem("Esse produto não existe!");
+			return false;
+		}
+		
+		for (Produto p: estoque) {
+			if (p.getId()==pedido.getId()) {
+				if (p.getQnt() - pedido.getQnt() < 0) {
+					TelaMensagem.mensagem("Não existe essa quantidade no estoque!");
+					return false;
+				}
+				else {
+					p.setQnt(p.getQnt()-pedido.getQnt());
+					pedidos.add(pedido);
+					TelaMensagem.mensagem("Pedido Realizado com sucesso!");
+					return true;
+				}
+			}
+			
+		}
+		return false;
 	}
 	
 }

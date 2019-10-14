@@ -11,6 +11,16 @@ public class Produto {
 		this.id = id;
 	}
 	
+	
+	
+	public String toString() {
+		return "ID: " + id + "\n" +
+				 "Nome: " + nome + "\n" +
+				 "Qnt: " + qnt + "\n\n";
+	}
+
+
+
 	public void addQnt(int qnt) {
 		this.qnt += qnt;
 	}

@@ -1,6 +1,5 @@
 package model;
 
-import view.TelaMensagem;
 
 public abstract class Usuario {
 	

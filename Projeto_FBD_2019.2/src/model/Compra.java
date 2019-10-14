@@ -14,7 +14,7 @@ public class Compra {
 	
 
 	public String toString() {
-		return "Id: " + id + "\n"+ 
+		return "ID: " + id + "\n"+ 
 				"Qnt: " + qnt + "\n" + 
 				"Fornecedor: " + fornecedor.getLogin() + "\n\n";
 	}
