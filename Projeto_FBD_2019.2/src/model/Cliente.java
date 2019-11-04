@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Cliente extends Usuario {
@@ -11,12 +12,19 @@ public class Cliente extends Usuario {
 		super(login, senha, "Cliente");
 	}
 	
+	public void atualizarDataPedidos() throws SQLException{
+		pedidos = BaseDados.daoVendas.dataVendasCliente(this);
+	}
+	
 	public String [][] dadosPedidos() {
-		String[][] s = new String[pedidos.size()][3];
+		
+		String[][] s = new String[pedidos.size()][4];
 		
 		int contador = 0;
 		for (Pedido p: pedidos) {
 			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getId());
+			contador++;
+			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getId_produto());
 			contador++;
 			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getQnt());
 			contador++;
@@ -25,12 +33,6 @@ public class Cliente extends Usuario {
 		}
 		
 		return s;
-	}
-	
-	
-	
-	public void addPedidos(Pedido pedido) {
-		pedidos.add(pedido);
 	}
 
 	public ArrayList<Pedido> getPedidos() {

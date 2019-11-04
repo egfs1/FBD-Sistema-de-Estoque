@@ -10,6 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class TelaLogin extends JFrame {
 
@@ -22,42 +25,57 @@ public class TelaLogin extends JFrame {
 	private JButton btnEntrar;
 
 	public TelaLogin() {
+		setBackground(Color.GRAY);
 		setForeground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 201, 164);
+		setBounds(100, 100, 460, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		contentPane.setBackground(Color.WHITE);
 		
 		setLocationRelativeTo(null);
 		setResizable(false);
+		contentPane.setLayout(null);
 		
-		lblLogin = new JLabel("Login");
-		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblLogin.setBounds(10, 11, 46, 19);
+		lblLogin = new JLabel("Usuario");
+		lblLogin.setBounds(10, 82, 87, 22);
+		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblLogin);
 		
 		lblSenha = new JLabel("Senha");
-		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSenha.setBounds(10, 60, 46, 14);
+		lblSenha.setBounds(10, 148, 87, 22);
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblSenha);
 		
 		fieldLogin = new JTextField();
-		fieldLogin.setBounds(10, 30, 175, 27);
+		fieldLogin.setBounds(10, 104, 434, 27);
 		contentPane.add(fieldLogin);
 		fieldLogin.setColumns(10);
 		
 		fieldSenha = new JTextField();
-		fieldSenha.setBounds(10, 74, 175, 27);
+		fieldSenha.setBounds(10, 170, 434, 27);
 		contentPane.add(fieldSenha);
 		fieldSenha.setColumns(10);
 		
 		btnEntrar = new JButton("Entrar");
+		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnEntrar.setBounds(157, 216, 137, 44);
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnEntrar.setBackground(Color.WHITE);
-		btnEntrar.setBounds(51, 105, 89, 23);
 		contentPane.add(btnEntrar);
+		
+		JLabel lblLogin_1 = new JLabel("Login");
+		lblLogin_1.setLabelFor(contentPane);
+		lblLogin_1.setForeground(Color.BLACK);
+		lblLogin_1.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		lblLogin_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogin_1.setBackground(Color.GRAY);
+		lblLogin_1.setBounds(0, 0, 454, 44);
+		contentPane.add(lblLogin_1);
 		
 		setVisible(true);
 	}
@@ -101,7 +119,4 @@ public class TelaLogin extends JFrame {
 	public void setBtnEntrar(JButton btnEntrar) {
 		this.btnEntrar = btnEntrar;
 	}
-	
-	
-	
 }

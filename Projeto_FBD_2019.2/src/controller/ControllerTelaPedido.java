@@ -18,16 +18,13 @@ public class ControllerTelaPedido {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				String id = trp.getFieldId().getText().intern();
+				String id_produto = trp.getFieldId().getText().intern();
 				String qnt = trp.getFieldQnt().getText().intern();
 				Cliente cliente = trp.getCliente();
 				
-				if (validarPedido(id, qnt)) {
-					Pedido pedido = new Pedido(Integer.parseInt(id), Integer.parseInt(qnt), cliente);
-					pedido.setCliente(cliente);
-					
-					if (BaseDados.addPedido(pedido))
-						cliente.addPedidos(pedido);
+				if (validarPedido(id_produto, qnt)) {
+					Pedido pedido = new Pedido(Integer.parseInt(id_produto), Integer.parseInt(qnt), cliente);
+					BaseDados.addPedido(pedido);
 					
 				}
 			}

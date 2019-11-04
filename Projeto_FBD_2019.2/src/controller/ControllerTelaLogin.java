@@ -43,6 +43,11 @@ public class ControllerTelaLogin{
 							TelaMensagem.mensagem("Logado com sucesso!");
 							user.setLogado(true);
 						}
+						
+						if (user.getTipo().equalsIgnoreCase("Fornecedor")) {
+							TelaMensagem.mensagem("Logado com sucesso!");
+							user.setLogado(true);
+						}
 					}
 					else {
 						TelaMensagem.mensagem("Usuario já está logado!");

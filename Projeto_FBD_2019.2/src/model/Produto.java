@@ -6,9 +6,8 @@ public class Produto {
 	private int id, qnt;
 	
 	
-	public Produto(String nome, int id) {
+	public Produto(String nome) {
 		this.nome = nome;
-		this.id = id;
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.BaseDados;
+import model.Produto;
 import view.TelaCadastrarProduto;
 import view.TelaMensagem;
 
@@ -14,31 +15,23 @@ public class ControllerCadastrarProduto {
 		tcp.getBtnCadastrar().addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				String nome = tcp.getFieldNome().getText().intern();
-				String id = tcp.getFieldId().getText().intern();
-				
-				if (validarProduto(nome, id))
-					BaseDados.cadastrarProduto(tcp.getFieldNome().getText(), Integer.parseInt(tcp.getFieldId().getText()));
+				String nome = tcp.getFieldNomeProduto().getText().intern();
+				if (validarProduto(nome)) {
+					Produto p = new Produto(nome);
+					BaseDados.cadastrarProduto(p);
+				}
 			}
 		});
 		
 	}
 	
-	public boolean validarProduto(String nome, String id) {
+	public boolean validarProduto(String nome) {
 		
-		if (nome=="" || id=="") {
+		if (nome=="") {
 			TelaMensagem.mensagem("Preencha todos os campos corretamente!");
 			return false;
 		}
-		
-		try {
-			Integer.parseInt(id);
-			
-		} catch(Exception e) {
-			TelaMensagem.mensagem("Preencha todos os campos corretamente!");
-			return false;
-		}
-		
+				
 		return true;
 	}
 	

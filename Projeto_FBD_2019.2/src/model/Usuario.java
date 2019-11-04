@@ -5,6 +5,7 @@ public abstract class Usuario {
 	
 	private String login, senha;
 	private String tipo; //ADM, Cliente, Caixa, Fornecedor
+	private int id;
 	private boolean logado=false;
 
 
@@ -44,6 +45,14 @@ public abstract class Usuario {
 
 	public void setLogado(boolean logado) {
 		this.logado = logado;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

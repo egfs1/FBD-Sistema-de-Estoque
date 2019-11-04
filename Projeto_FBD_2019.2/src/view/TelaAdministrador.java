@@ -3,16 +3,20 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import model.Administrador;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
+import java.awt.Insets;
 
 public class TelaAdministrador extends JFrame {
 	
@@ -20,96 +24,186 @@ public class TelaAdministrador extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private TelaLogin tl;
 	private Administrador adm;
-	private JPanel contentPane;
-	private JLabel label, lblUsuario;
-	private JButton btnVisualizarEstoque, btnVisualizarPedidos, btnComprarProduto,
-					btnCadastrarProduto, btnCadastrarCliente, btnDeslogar;
-	private JButton btnVisualizarCompras;
+	private JPanel panelAcoes, panelTable;
+	private JLabel lblUsuario;
+	private JButton btnVisualizarEstoque, btnVisualizarVendas;
+	private JButton btnVisualizarEncomendas;
+	private JMenuBar menuBar;
+	private JMenu mnCadastrar;
+	private JMenu mnEncomendar;
+	private JMenuItem mntmCadastrarProduto;
+	private JMenuItem mntmCadastrarUsuario;
+	private JMenuItem mntmEncomendarProduto;
+	private JMenuItem mntmDeslogar;
+	private JButton btnVisualizarUsuarios;
 
 
 	public TelaAdministrador(TelaLogin tl,Administrador adm) {
+		getContentPane().setBackground(Color.WHITE);
 		this.tl = tl;
 		this.adm = adm;
 		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 179, 402);
-		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 700, 500);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-		label = new JLabel(adm.getLogin());
-		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label.setBounds(66, 11, 87, 25);
-		contentPane.add(label);
+		panelAcoes = new JPanel();
+		panelAcoes.setSize(176, 447);
+		panelAcoes.setBackground(Color.WHITE);
+		panelAcoes.setLayout(null);
+		panelAcoes.setLocation(0, 24);
+		getContentPane().add(panelAcoes);
 		
-		lblUsuario = new JLabel("Usuario: ");
+		lblUsuario = new JLabel("Usuario:  " + adm.getLogin());
+		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUsuario.setBounds(0, 0, 176, 36);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblUsuario.setBounds(10, 11, 68, 25);
-		contentPane.add(lblUsuario);
+		panelAcoes.add(lblUsuario);
 		
 		btnVisualizarEstoque = new JButton("Visualizar Estoque");
+		btnVisualizarEstoque.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnVisualizarEstoque.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnVisualizarEstoque.setBounds(4, 60, 168, 50);
 		btnVisualizarEstoque.setBackground(Color.WHITE);
-		btnVisualizarEstoque.setBounds(10, 61, 153, 23);
-		contentPane.add(btnVisualizarEstoque);
+		panelAcoes.add(btnVisualizarEstoque);
 		
-		btnCadastrarProduto = new JButton("Cadastrar Produto");
-		btnCadastrarProduto.setBackground(Color.WHITE);
-		btnCadastrarProduto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnCadastrarProduto.setBounds(10, 240, 153, 23);
-		contentPane.add(btnCadastrarProduto);
+		btnVisualizarVendas = new JButton("Visualizar Vendas");
+		btnVisualizarVendas.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnVisualizarVendas.setBounds(4, 160, 168, 50);
+		btnVisualizarVendas.setBackground(Color.WHITE);
+		panelAcoes.add(btnVisualizarVendas);
+		getContentPane().setLayout(null);
 		
-		btnCadastrarCliente = new JButton("Cadastrar Usuario");
-		btnCadastrarCliente.setBackground(Color.WHITE);
-		btnCadastrarCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnCadastrarCliente.setBounds(10, 274, 153, 23);
-		contentPane.add(btnCadastrarCliente);
+		btnVisualizarEncomendas = new JButton("Visualizar Encomendas");
+		btnVisualizarEncomendas.setBounds(4, 260, 168, 50);
+		btnVisualizarEncomendas.setBackground(Color.WHITE);
+		btnVisualizarEncomendas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelAcoes.add(btnVisualizarEncomendas);
 		
-		btnVisualizarPedidos = new JButton("Visualizar Pedidos");
-		btnVisualizarPedidos.setBackground(Color.WHITE);
-		btnVisualizarPedidos.setBounds(10, 91, 153, 23);
-		contentPane.add(btnVisualizarPedidos);
+		btnVisualizarUsuarios = new JButton("Visualizar Usuarios");
+		btnVisualizarUsuarios.setBackground(Color.WHITE);
+		btnVisualizarUsuarios.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnVisualizarUsuarios.setBounds(4, 360, 168, 50);
+		panelAcoes.add(btnVisualizarUsuarios);
+
 		
-		btnComprarProduto = new JButton("Comprar Produto");
-		btnComprarProduto.setBackground(Color.WHITE);
-		btnComprarProduto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnComprarProduto.setBounds(10, 185, 153, 23);
-		contentPane.add(btnComprarProduto);
+		menuBar = new JMenuBar();
+		menuBar.setMargin(new Insets(0, 0, 0, 450));
+		menuBar.setBounds(0, 0, 694, 24);
+		getContentPane().add(menuBar);
 		
-		btnDeslogar = new JButton("Deslogar");
-		btnDeslogar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnDeslogar.setBackground(Color.WHITE);
-		btnDeslogar.setBounds(41, 339, 89, 23);
-		contentPane.add(btnDeslogar);
+		mnCadastrar = new JMenu("Cadastrar");
+		menuBar.add(mnCadastrar);
 		
-		btnVisualizarCompras = new JButton("Visualizar Compras");
-		btnVisualizarCompras.setBackground(Color.WHITE);
-		btnVisualizarCompras.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnVisualizarCompras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnVisualizarCompras.setBounds(10, 122, 153, 23);
-		contentPane.add(btnVisualizarCompras);
+		mntmCadastrarProduto = new JMenuItem("Cadastrar Produto");
+		mntmCadastrarProduto.setHorizontalAlignment(SwingConstants.LEFT);
+		mnCadastrar.add(mntmCadastrarProduto);
 		
+		mntmCadastrarUsuario = new JMenuItem("Cadastrar Usuario");
+		mntmCadastrarUsuario.setHorizontalAlignment(SwingConstants.LEFT);
+		mnCadastrar.add(mntmCadastrarUsuario);
+				
+		mnEncomendar = new JMenu("Encomendar");
+		menuBar.add(mnEncomendar);
+		
+		mntmEncomendarProduto = new JMenuItem("Encomendar Produto");
+		mnEncomendar.add(mntmEncomendarProduto);
+		
+		mntmDeslogar = new JMenuItem("Deslogar");
+		mntmDeslogar.setSize(20,24);
+		menuBar.add(mntmDeslogar);
+
 		setVisible(true);
 	}
 
+
+
+
+	public JMenuItem getMntmDeslogar() {
+		return mntmDeslogar;
+	}
+
+
+
+
+	public void setMntmDeslogar(JMenuItem mntmDeslogar) {
+		this.mntmDeslogar = mntmDeslogar;
+	}
+
+
+
+
+	public JMenuItem getMntmCadastrarProduto() {
+		return mntmCadastrarProduto;
+	}
+
+
+
+
+	public void setMntmCadastrarProduto(JMenuItem mntmCadastrarProduto) {
+		this.mntmCadastrarProduto = mntmCadastrarProduto;
+	}
+
+
+
+
+	public JMenuItem getMntmCadastrarUsuario() {
+		return mntmCadastrarUsuario;
+	}
+
+
+
+
+	public void setMntmCadastrarUsuario(JMenuItem mntmCadastrarUsuario) {
+		this.mntmCadastrarUsuario = mntmCadastrarUsuario;
+	}
+
+
+
+
+	public JMenuItem getMntmEncomendarProduto() {
+		return mntmEncomendarProduto;
+	}
+
+
+
+
+	public void setMntmEncomendarProduto(JMenuItem mntmEncomendarProduto) {
+		this.mntmEncomendarProduto = mntmEncomendarProduto;
+	}
+
+
+
+
+	public JPanel getPanelTable() {
+		return panelTable;
+	}
+
+
+
+
+	public void setPanelTable(JPanel panelTable) {
+		if (this.panelTable!=null)
+			this.getContentPane().remove(this.panelTable);
+		this.panelTable = panelTable;
+		this.getContentPane().add(this.panelTable);
+	}
+
+
+	public JPanel getPanelAcoes() {
+		return panelAcoes;
+	}
+
+
+
+
+	public void setPanelAcoes(JPanel panelAcoes) {
+		this.panelAcoes = panelAcoes;
+	}
 
 	public TelaLogin getTl() {
 		return tl;
@@ -142,61 +236,37 @@ public class TelaAdministrador extends JFrame {
 
 
 	public JButton getBtnVisualizarPedidos() {
-		return btnVisualizarPedidos;
+		return btnVisualizarVendas;
 	}
 
 
 	public void setBtnVisualizarPedidos(JButton btnVisualizarPedidos) {
-		this.btnVisualizarPedidos = btnVisualizarPedidos;
-	}
-
-
-	public JButton getBtnComprarProduto() {
-		return btnComprarProduto;
-	}
-
-
-	public void setBtnComprarProduto(JButton btnComprarProduto) {
-		this.btnComprarProduto = btnComprarProduto;
-	}
-
-
-	public JButton getBtnCadastrarProduto() {
-		return btnCadastrarProduto;
-	}
-
-
-	public void setBtnCadastrarProduto(JButton btnCadastrarProduto) {
-		this.btnCadastrarProduto = btnCadastrarProduto;
-	}
-
-
-	public JButton getBtnCadastrarCliente() {
-		return btnCadastrarCliente;
-	}
-
-
-	public void setBtnCadastrarCliente(JButton btnCadastrarCliente) {
-		this.btnCadastrarCliente = btnCadastrarCliente;
-	}
-
-
-	public JButton getBtnDeslogar() {
-		return btnDeslogar;
-	}
-
-
-	public void setBtnDeslogar(JButton btnDeslogar) {
-		this.btnDeslogar = btnDeslogar;
+		this.btnVisualizarVendas = btnVisualizarPedidos;
 	}
 
 
 	public JButton getBtnVisualizarCompras() {
-		return btnVisualizarCompras;
+		return btnVisualizarEncomendas;
 	}
 
 
 	public void setBtnVisualizarCompras(JButton btnVisualizarCompras) {
-		this.btnVisualizarCompras = btnVisualizarCompras;
+		this.btnVisualizarEncomendas = btnVisualizarCompras;
 	}
+
+
+
+
+	public JButton getBtnVisualizarUsuarios() {
+		return btnVisualizarUsuarios;
+	}
+
+
+
+
+	public void setBtnVisualizarUsuarios(JButton btnVisualizarUsuarios) {
+		this.btnVisualizarUsuarios = btnVisualizarUsuarios;
+	}
+	
+	
 }

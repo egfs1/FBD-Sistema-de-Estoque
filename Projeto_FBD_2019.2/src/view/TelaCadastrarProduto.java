@@ -12,19 +12,21 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastrarProduto extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField fieldNome;
-	private JTextField fieldId;
-	private JLabel lblNome, lblId, lblCadastrarProdutos;
+	private JTextField fieldNomeProduto;
+	private JLabel lblNomeProduto, lblCadastrarProdutos;
 	private JButton btnCadastrar;
 	
 	public TelaCadastrarProduto() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 225, 215);
+		setBounds(100, 100, 350, 250);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -33,55 +35,40 @@ public class TelaCadastrarProduto extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		
-		lblNome = new JLabel("Nome do Produto");
-		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNome.setBounds(10, 51, 132, 14);
-		contentPane.add(lblNome);
-		
-		lblId = new JLabel("ID");
-		lblId.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblId.setBounds(10, 95, 30, 14);
-		contentPane.add(lblId);
+		lblNomeProduto = new JLabel("Nome do Produto");
+		lblNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNomeProduto.setBounds(10, 89, 132, 14);
+		contentPane.add(lblNomeProduto);
 		
 		lblCadastrarProdutos = new JLabel("Cadastrar Produtos");
+		lblCadastrarProdutos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastrarProdutos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCadastrarProdutos.setBounds(45, 11, 132, 14);
+		lblCadastrarProdutos.setBounds(0, 0, 344, 25);
 		contentPane.add(lblCadastrarProdutos);
 		
-		fieldNome = new JTextField();
-		fieldNome.setBounds(10, 68, 199, 27);
-		contentPane.add(fieldNome);
-		fieldNome.setColumns(10);
-		
-		fieldId = new JTextField();
-		fieldId.setBounds(10, 112, 199, 27);
-		contentPane.add(fieldId);
-		fieldId.setColumns(10);
-		String s = "" + (BaseDados.estoque.size()+1);
-		fieldId.setText(s);
+		fieldNomeProduto = new JTextField();
+		fieldNomeProduto.setBounds(10, 103, 324, 27);
+		contentPane.add(fieldNomeProduto);
+		fieldNomeProduto.setColumns(10);
 		
 		btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnCadastrar.setBackground(Color.WHITE);
-		btnCadastrar.setBounds(55, 152, 105, 23);
+		btnCadastrar.setBounds(110, 169, 105, 41);
 		contentPane.add(btnCadastrar);
 		
 		setVisible(false);
 	}
 
-	public JTextField getFieldNome() {
-		return fieldNome;
+	public JTextField getFieldNomeProduto() {
+		return fieldNomeProduto;
 	}
 
-	public void setFieldNome(JTextField fieldNome) {
-		this.fieldNome = fieldNome;
-	}
-
-	public JTextField getFieldId() {
-		return fieldId;
-	}
-
-	public void setFieldId(JTextField fieldId) {
-		this.fieldId = fieldId;
+	public void setFieldNomeProduto(JTextField fieldNome) {
+		this.fieldNomeProduto = fieldNome;
 	}
 
 	public JButton getBtnCadastrar() {

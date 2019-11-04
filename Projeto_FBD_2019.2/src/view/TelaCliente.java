@@ -1,78 +1,91 @@
 package view;
 
 import java.awt.Font;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import model.Cliente;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class TelaCliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private TelaLogin tl;
 	private Cliente cliente;
-	private JPanel contentPane;
-	private JLabel label, lblUsuario;
-	private JButton btnDeslogar;
+	private JPanel panelAcoes, panelTable;
+	private JLabel lblUsuario;
 	private JButton btnVisualizarEstoque;
-	private JButton btnRealizarPedido;
 	private JButton btnVisualizarPedidos;
-
+	private JMenuBar menuBar;
+	private JMenu mnOpcoes;
+	private JMenuItem mntmRealizarPedido, mntmDeslogar;
+	
 
 	public TelaCliente(TelaLogin tl,Cliente cliente) {
 		this.tl = tl;
 		this.cliente = cliente;
 		
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 179, 306);
-		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		try {
+			cliente.atualizarDataPedidos();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 700, 500);
+		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-		label = new JLabel(cliente.getLogin());
-		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label.setBounds(66, 11, 87, 25);
-		contentPane.add(label);
+		panelAcoes = new JPanel();
+		panelAcoes.setBounds(0,24,176, 447);
+		panelAcoes.setBackground(Color.WHITE);
+		panelAcoes.setLayout(null);
+		getContentPane().add(panelAcoes, BorderLayout.CENTER);
 		
-		lblUsuario = new JLabel("Usuario: ");
+		lblUsuario = new JLabel("Usuario:	" + cliente.getLogin());
+		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblUsuario.setBounds(10, 11, 68, 25);
-		contentPane.add(lblUsuario);
-		
-		btnDeslogar = new JButton("Deslogar");
-		btnDeslogar.setBackground(Color.WHITE);
-		btnDeslogar.setBounds(41, 243, 89, 23);
-		contentPane.add(btnDeslogar);
+		lblUsuario.setBounds(0, 0, 176, 36);
+		panelAcoes.add(lblUsuario);
 		
 		btnVisualizarEstoque = new JButton("Visualizar Estoque");
 		btnVisualizarEstoque.setBackground(Color.WHITE);
-		btnVisualizarEstoque.setBounds(10, 58, 153, 23);
-		contentPane.add(btnVisualizarEstoque);
-		
-		btnRealizarPedido = new JButton("Realizar Pedido");
-		btnRealizarPedido.setBackground(Color.WHITE);
-		btnRealizarPedido.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRealizarPedido.setBounds(10, 153, 153, 23);
-		contentPane.add(btnRealizarPedido);
+		btnVisualizarEstoque.setBounds(4, 60, 168, 50);
+		panelAcoes.add(btnVisualizarEstoque);
 		
 		btnVisualizarPedidos = new JButton("Visualizar Pedidos");
 		btnVisualizarPedidos.setBackground(Color.WHITE);
-		btnVisualizarPedidos.setBounds(10, 92, 153, 23);
-		contentPane.add(btnVisualizarPedidos);
+		btnVisualizarPedidos.setBounds(4, 160, 168, 50);
+		panelAcoes.add(btnVisualizarPedidos);
+		
+		menuBar = new JMenuBar();
+		menuBar.setMargin(new Insets(0, 0, 0, 450));
+		menuBar.setBounds(0, 0, 694, 24);
+		getContentPane().add(menuBar);
+		
+		mnOpcoes = new JMenu("Op\u00E7\u00F5es");
+		menuBar.add(mnOpcoes);
+		
+		mntmRealizarPedido = new JMenuItem("Realizar Pedido");
+		mnOpcoes.add(mntmRealizarPedido);
+		
+		mntmDeslogar = new JMenuItem("Deslogar");
+		mnOpcoes.add(mntmDeslogar);
+		
 		
 		setVisible(true);
 	}
@@ -85,16 +98,6 @@ public class TelaCliente extends JFrame {
 
 	public void setTl(TelaLogin tl) {
 		this.tl = tl;
-	}
-
-
-	public JButton getBtnDeslogar() {
-		return btnDeslogar;
-	}
-
-
-	public void setBtnDeslogar(JButton btnDeslogar) {
-		this.btnDeslogar = btnDeslogar;
 	}
 
 
@@ -118,16 +121,6 @@ public class TelaCliente extends JFrame {
 	}
 
 
-	public JButton getBtnRealizarPedido() {
-		return btnRealizarPedido;
-	}
-
-
-	public void setBtnRealizarPedido(JButton btnRealizarPedido) {
-		this.btnRealizarPedido = btnRealizarPedido;
-	}
-
-
 	public JButton getBtnVisualizarPedidos() {
 		return btnVisualizarPedidos;
 	}
@@ -136,7 +129,50 @@ public class TelaCliente extends JFrame {
 	public void setBtnVisualizarPedidos(JButton btnVisualizarPedidos) {
 		this.btnVisualizarPedidos = btnVisualizarPedidos;
 	}
-	
-	
 
+
+	public JPanel getPanelAcoes() {
+		return panelAcoes;
+	}
+
+
+	public void setPanelAcoes(JPanel panelAcoes) {
+		this.panelAcoes = panelAcoes;
+	}
+
+
+	public JPanel getPanelTable() {
+		return panelTable;
+	}
+
+
+	public void setPanelTable(JPanel panelTable) {
+		if (this.panelTable!=null)
+			this.getContentPane().remove(this.panelTable);
+		this.panelTable = panelTable;
+		this.getContentPane().add(this.panelTable);
+	}
+
+
+	public JMenuItem getMntmRealizarPedido() {
+		return mntmRealizarPedido;
+	}
+
+
+	public void setMntmRealizarPedido(JMenuItem mntmRealizarPedido) {
+		this.mntmRealizarPedido = mntmRealizarPedido;
+	}
+
+
+	public JMenuItem getMntmDeslogar() {
+		return mntmDeslogar;
+	}
+
+
+	public void setMntmDeslogar(JMenuItem mntmDeslogar) {
+		this.mntmDeslogar = mntmDeslogar;
+	}
+	
+	
+	
 }

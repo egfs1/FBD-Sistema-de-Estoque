@@ -4,33 +4,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.BaseDados;
-import model.Compra;
+import model.Encomenda;
 import model.Fornecedor;
 import model.Usuario;
-import view.TelaComprarProduto;
+import view.TelaEncomendarProduto;
 import view.TelaMensagem;
 
 public class ControllerComprarProduto {
 	
-	public ControllerComprarProduto(TelaComprarProduto tcop) {
+	public ControllerComprarProduto(TelaEncomendarProduto tcop) {
 		
 		tcop.getBtnComprar().addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				String id = tcop.getFieldId().getText().intern();
+				String id_produto = tcop.getFieldId().getText().intern();
 				String qnt = tcop.getFieldQnt().getText().intern();
 				String forn = tcop.getFieldFornecedor().getText().intern();
 				Fornecedor fornecedor;
 				
-				if (validarProduto(id, qnt, forn)) {
-					BaseDados.addProduto(Integer.parseInt(id), Integer.parseInt(qnt));
+				if (validarProduto(id_produto, qnt, forn)) {
 					
 					fornecedor =  (Fornecedor) BaseDados.buscarUsuario_login(forn);
-					Compra compra = new Compra(Integer.parseInt(id), Integer.parseInt(qnt), fornecedor);
+					Encomenda encomenda = new Encomenda(Integer.parseInt(id_produto),Integer.parseInt(qnt), fornecedor);
 					
-					fornecedor.addCompras(compra);
-					BaseDados.addCompra(compra);
-					
+					BaseDados.encomendarProduto(encomenda);
 				}
 			}
 		});
