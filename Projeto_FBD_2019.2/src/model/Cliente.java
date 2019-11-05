@@ -19,16 +19,15 @@ public class Cliente extends Usuario {
 	public String [][] dadosPedidos() {
 		
 		String[][] s = new String[pedidos.size()][4];
-		
 		int contador = 0;
 		for (Pedido p: pedidos) {
 			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getId());
 			contador++;
 			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getId_produto());
 			contador++;
-			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getQnt());
-			contador++;
 			s[pedidos.indexOf(p)][contador] = String.valueOf(this.getLogin());
+			contador++;
+			s[pedidos.indexOf(p)][contador] = String.valueOf(p.getQnt());
 			contador=0;
 		}
 		

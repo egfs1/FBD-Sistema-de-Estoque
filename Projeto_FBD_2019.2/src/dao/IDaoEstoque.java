@@ -15,4 +15,8 @@ public interface IDaoEstoque {
 	
 	public ArrayList<Produto> dataEstoque() throws SQLException;
 	
+	public void delete(Produto produto) throws SQLException;
+	
+	public void edit(Produto produto, String login) throws SQLException;
+	
 }

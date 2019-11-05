@@ -71,22 +71,19 @@ public class DaoEncomendas implements IDaoEncomendas {
 		
 		this.conexao = SQLConnection.getConnectionInstance(SQLConnection.NOME_BD_CONNECTION_POSTGRES);
 		
-		this.statement = conexao.createStatement();
-		this.rs = statement.executeQuery(SQLUtil.Encomendas.SELECT_ALL);
+		this.preparedstatement = conexao.prepareStatement(SQLUtil.Encomendas.SELECT_FORNECEDOR);
+		
+		this.rs = preparedstatement.executeQuery();
 		
 		while (rs.next()) {
 			int id = rs.getInt("id");
 			int id_produto = rs.getInt("id_produto");
-			String fornecedor_string = rs.getString("fornecedor");
 			int qnt = rs.getInt("qnt");
 			
-			Fornecedor f = (Fornecedor) BaseDados.buscarUsuario_login(fornecedor_string);
 			
-			if (fornecedor.equals(f)) {
-				Encomenda e = new Encomenda(id_produto, qnt, fornecedor);
-				e.setId(id);
-				data.add(e);	
-			}
+			Encomenda e = new Encomenda(id_produto, qnt, fornecedor);
+			e.setId(id);
+			data.add(e);	
 		}
 		
 		this.conexao.close();

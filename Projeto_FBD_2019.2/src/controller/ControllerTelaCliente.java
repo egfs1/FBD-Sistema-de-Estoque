@@ -63,6 +63,8 @@ public class ControllerTelaCliente {
 			}
 		});
 		
+		
+		
 	}
 	
 	public static void atualizarEstoque() {

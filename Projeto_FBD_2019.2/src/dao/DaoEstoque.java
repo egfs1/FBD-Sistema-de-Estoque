@@ -56,7 +56,7 @@ public class DaoEstoque implements IDaoEstoque {
 	public void removerQnt(Produto produto, int qnt) throws SQLException {
 		
 		this.conexao = SQLConnection.getConnectionInstance(SQLConnection.NOME_BD_CONNECTION_POSTGRES);
-        this.preparedstatement = conexao.prepareStatement(SQLUtil.Estoque.REMOVE_QNT);
+        this.preparedstatement = conexao.prepareStatement(SQLUtil.Estoque.REMOVER_QNT);
         
         preparedstatement.setInt(1, qnt);
         preparedstatement.setInt(2, produto.getId());
@@ -90,6 +90,38 @@ public class DaoEstoque implements IDaoEstoque {
 		this.conexao.close();
 		
 		return data;
+	}
+
+
+	@Override
+	public void delete(Produto produto) throws SQLException {
+		
+		this.conexao = SQLConnection.getConnectionInstance(SQLConnection.NOME_BD_CONNECTION_POSTGRES);
+        this.preparedstatement = conexao.prepareStatement(SQLUtil.Estoque.DELETE_PRODUTO);
+        
+        preparedstatement.setInt(1, produto.getId());
+		
+        preparedstatement.execute();
+        
+        this.conexao.close();
+		
+		
+	}
+
+
+	@Override
+	public void edit(Produto produto, String login) throws SQLException {
+		
+		this.conexao = SQLConnection.getConnectionInstance(SQLConnection.NOME_BD_CONNECTION_POSTGRES);
+        this.preparedstatement = conexao.prepareStatement(SQLUtil.Estoque.EDIT_NOME_PRODUTO);
+        
+        preparedstatement.setString(1, login);
+        preparedstatement.setInt(2, produto.getId());
+		
+        preparedstatement.execute();
+        
+        this.conexao.close();
+		
 	}
 	
 	

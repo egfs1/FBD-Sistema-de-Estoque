@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.ControllerTelaLogin;
+import model.Administrador;
 import model.BaseDados;
 import view.TelaLogin;
 
@@ -31,7 +32,7 @@ public class App {
 		ControllerTelaLogin ctl = new ControllerTelaLogin(tl);
 		
 //		Administrador u1 = new Administrador("admin", "admin");
-//		BaseDados.addUsuario(u1);
+//		BaseDados.cadastrarUsuario(u1);
 		
 		
 	}	

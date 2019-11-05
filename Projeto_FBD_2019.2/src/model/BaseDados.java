@@ -9,6 +9,7 @@ import dao.DaoEncomendas;
 import dao.DaoEstoque;
 import dao.DaoUsuarios;
 import dao.DaoVendas;
+import view.TelaAdministrador;
 import view.TelaMensagem;
 
 public class BaseDados {
@@ -62,6 +63,24 @@ public class BaseDados {
 		return null;
 	}
 	
+	public static Usuario buscarUsuario_id(int id) {
+		for (Usuario u: usuarios) {
+			if (u.getId()==id) {
+				return u;
+			}
+		}
+		return null;
+	}
+	
+	public static Produto buscarProduto_id(int id) {
+		for(Produto p: estoque) {
+			if (p.getId()==id) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
 	
 	public static boolean cadastrarUsuario(Usuario usuario) throws SQLException {
 		
@@ -105,12 +124,12 @@ public class BaseDados {
 		try {
 			daoEstoque.salvar(p);
 			atualizarDataEstoque();
+			ControllerTelaAdministrador.atualizarUsuarios();
+			ControllerTelaAdministrador.atualizarTelaCadastrarUsuario();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		ControllerTelaAdministrador.atualizarEstoque();
-		ControllerTelaAdministrador.atualizarTelaCadastrarProduto();
 		
 		return true;
 		
@@ -137,12 +156,12 @@ public class BaseDados {
 						
 						atualizarDataEstoque();
 						atualizarDataEncomendas();
+						
+						ControllerTelaAdministrador.atualizarEncomendas();
+						ControllerTelaAdministrador.atualizarTelaEncomendarProduto();
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-					
-					ControllerTelaAdministrador.atualizarEncomendas();
-					ControllerTelaAdministrador.atualizarTelaEncomendarProduto();
 					
 					return true;
 				}
@@ -189,6 +208,55 @@ public class BaseDados {
 		}
 		return false;
 	}
+	
+	public static void editarProduto(Produto produto, String login) {
+		try {
+			daoEstoque.edit(produto, login);
+			atualizarDataEstoque();
+			ControllerTelaAdministrador.atualizarEstoque();
+			ControllerTelaAdministrador.atualizarTelaEditProduto();
+			TelaMensagem.mensagem("Modificação Salva com sucesso!");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void deletarProduto(Produto produto) {
+		try {
+			daoEstoque.delete(produto);
+			atualizarDataEstoque();
+			ControllerTelaAdministrador.atualizarEstoque();
+			ControllerTelaAdministrador.atualizarTelaEditProduto();
+			TelaMensagem.mensagem("Produto Deletado com sucesso!");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void editarUsuario(Usuario usuario, String login, String senha) {
+		try {
+			daoUsuarios.edit(usuario, login, senha);
+			atualizarDataUsuarios();
+			ControllerTelaAdministrador.atualizarUsuarios();;
+			ControllerTelaAdministrador.atualizarTelaEditUsuario();
+			TelaMensagem.mensagem("Modificação Salva com sucesso!");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void deletarUsuario(Usuario usuario) {
+		try {
+			daoUsuarios.deletar(usuario);
+			atualizarDataUsuarios();
+			ControllerTelaAdministrador.atualizarUsuarios();;
+			ControllerTelaAdministrador.atualizarTelaEditUsuario();
+			TelaMensagem.mensagem("Usuario Deletado com sucesso!");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 //	==========================================================================================================================================
 //	Dados das Tabelas

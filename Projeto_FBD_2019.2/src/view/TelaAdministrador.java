@@ -29,12 +29,8 @@ public class TelaAdministrador extends JFrame {
 	private JButton btnVisualizarEstoque, btnVisualizarVendas;
 	private JButton btnVisualizarEncomendas;
 	private JMenuBar menuBar;
-	private JMenu mnCadastrar;
-	private JMenu mnEncomendar;
-	private JMenuItem mntmCadastrarProduto;
-	private JMenuItem mntmCadastrarUsuario;
-	private JMenuItem mntmEncomendarProduto;
-	private JMenuItem mntmDeslogar;
+	private JMenu mnCadastrar, mnEditar, mnEncomendar;
+	private JMenuItem mntmCadastrarProduto, mntmCadastrarUsuario, mntmEncomendarProduto, mntmDeslogar, mntmEditarProduto, mntmEditarUsuario;
 	private JButton btnVisualizarUsuarios;
 
 
@@ -92,7 +88,7 @@ public class TelaAdministrador extends JFrame {
 
 		
 		menuBar = new JMenuBar();
-		menuBar.setMargin(new Insets(0, 0, 0, 450));
+		menuBar.setMargin(new Insets(0, 0, 0, 350));
 		menuBar.setBounds(0, 0, 694, 24);
 		getContentPane().add(menuBar);
 		
@@ -112,6 +108,15 @@ public class TelaAdministrador extends JFrame {
 		
 		mntmEncomendarProduto = new JMenuItem("Encomendar Produto");
 		mnEncomendar.add(mntmEncomendarProduto);
+		
+		mnEditar = new JMenu("Editar");
+		menuBar.add(mnEditar);
+		
+		mntmEditarProduto = new JMenuItem("Editar Produto");
+		mnEditar.add(mntmEditarProduto);
+		
+		mntmEditarUsuario = new JMenuItem("Editar Usuario");
+		mnEditar.add(mntmEditarUsuario);
 		
 		mntmDeslogar = new JMenuItem("Deslogar");
 		mntmDeslogar.setSize(20,24);
@@ -266,6 +271,34 @@ public class TelaAdministrador extends JFrame {
 
 	public void setBtnVisualizarUsuarios(JButton btnVisualizarUsuarios) {
 		this.btnVisualizarUsuarios = btnVisualizarUsuarios;
+	}
+
+
+
+
+	public JMenuItem getMntmEditarProduto() {
+		return mntmEditarProduto;
+	}
+
+
+
+
+	public void setMntmEditarProduto(JMenuItem mntmEditarProduto) {
+		this.mntmEditarProduto = mntmEditarProduto;
+	}
+
+
+
+
+	public JMenuItem getMntmEditarUsuario() {
+		return mntmEditarUsuario;
+	}
+
+
+
+
+	public void setMntmEditarUsuario(JMenuItem mntmEditarUsuario) {
+		this.mntmEditarUsuario = mntmEditarUsuario;
 	}
 	
 	

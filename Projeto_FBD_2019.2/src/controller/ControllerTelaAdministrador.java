@@ -9,6 +9,8 @@ import model.BaseDados;
 import view.TelaAdministrador;
 import view.TelaCadastrarProduto;
 import view.TelaCadastrarUsuario;
+import view.TelaEditarProduto;
+import view.TelaEditarUsuario;
 import view.TelaEncomendarProduto;
 import view.PanelTable;
 
@@ -19,9 +21,13 @@ public class ControllerTelaAdministrador {
 	private static TelaCadastrarProduto tcp;
 	private static TelaCadastrarUsuario tcu;
 	private static TelaEncomendarProduto tcop;
+	private static TelaEditarProduto tep;
+	private static TelaEditarUsuario teu;
 	private static ControllerCadastrarProduto ccp;
 	private static ControllerCadastrarUsuario ccu;
 	private static ControllerComprarProduto ccop;
+	private static ControllerTelaEditProduto ctep;
+	private static ControllerTelaEditUsuario cteu;
 	
 	public ControllerTelaAdministrador(TelaAdministrador ta) {
 		ControllerTelaAdministrador.ta = ta;
@@ -43,6 +49,11 @@ public class ControllerTelaAdministrador {
 		tcop = new TelaEncomendarProduto();
 		ccop = new ControllerComprarProduto(tcop);
 		
+		tep = new TelaEditarProduto();
+		ctep = new ControllerTelaEditProduto(tep);
+		
+		teu = new TelaEditarUsuario();
+		cteu = new ControllerTelaEditUsuario(teu);
 		
 		ta.getMntmDeslogar().addActionListener(new ActionListener() {
 			
@@ -104,6 +115,22 @@ public class ControllerTelaAdministrador {
 			
 			public void actionPerformed(ActionEvent e) {
 				atualizarTelaEncomendarProduto();
+			}
+		});
+		
+		ta.getMntmEditarProduto().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				atualizarTelaEditProduto();
+			}
+		});
+		
+		ta.getMntmEditarUsuario().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				atualizarTelaEditUsuario();
 			}
 		});
 		
@@ -172,4 +199,21 @@ public class ControllerTelaAdministrador {
 		}
 	}
 	
+	public static void atualizarTelaEditProduto() {
+		if (tep!=null) {
+			tep.dispose();
+			tep = new TelaEditarProduto();
+			ctep = new ControllerTelaEditProduto(tep);
+			tep.setVisible(true);
+		}
+	}
+	
+	public static void atualizarTelaEditUsuario() {
+		if (teu!=null) {
+			teu.dispose();
+			teu = new TelaEditarUsuario();
+			cteu = new ControllerTelaEditUsuario(teu);
+			teu.setVisible(true);
+		}
+	}
 }

@@ -12,9 +12,13 @@ public class SQLUtil {
 		
 		public static String ADD_QNT = "update estoque set qnt= qnt + ? WHERE id= ?";
 		
-		public static String REMOVE_QNT = "update estoque set qnt= qnt - ? WHERE id=?";
+		public static String REMOVER_QNT = "update estoque set qnt= qnt - ? WHERE id=?";
 		
 		public static String SELECT_ALL = "Select * from estoque";
+		
+		public static String EDIT_NOME_PRODUTO = "update estoque set nome=? WHERE id=?";
+		
+		public static String DELETE_PRODUTO = "delete from estoque WHERE id=?";
 		
 	}
 	
@@ -24,8 +28,9 @@ public class SQLUtil {
 		
 		public static String SELECT_ALL = "Select * from usuarios";
 		
+		public static String EDIT_ALL = "update usuarios set login=?, senha=? WHERE id=?";
 		
-		
+		public static String DELETE_USUARIO = "delete from usuarios WHERE id=?";
 	}
 	
 	public static class Encomendas {
@@ -34,6 +39,8 @@ public class SQLUtil {
 		
 		public static String SELECT_ALL = "Select * from encomendas";
 		
+		public static String SELECT_FORNECEDOR = "Select * from encomendas WHERE fornecedor=?";
+		
 	}
 	
 	public static class Vendas {
@@ -41,6 +48,8 @@ public class SQLUtil {
 		public static String INSERT_ALL = "insert into vendas (id_produto,cliente,qnt) " + "values (?,?,?) ";
 		
 		public static String SELECT_ALL = "Select * from vendas";
+		
+		public static String SELECT_CLIENTE = "Select * from vendas WHERE cliente=?";
 		
 	}
 	

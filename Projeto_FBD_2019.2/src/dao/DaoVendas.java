@@ -74,23 +74,21 @@ public class DaoVendas implements IDaoVendas {
 		ArrayList<Pedido>data = new ArrayList<>();
 		
 		this.conexao = SQLConnection.getConnectionInstance(SQLConnection.NOME_BD_CONNECTION_POSTGRES);
-		this.statement = conexao.createStatement();
-		this.rs = statement.executeQuery(SQLUtil.Vendas.SELECT_ALL);
 		
+		this.preparedstatement = conexao.prepareStatement(SQLUtil.Vendas.SELECT_CLIENTE);
 		
+		preparedstatement.setString(1, cliente.getLogin());
+		
+		this.rs = preparedstatement.executeQuery();
 		
 		while (rs.next()) {
 			int id = rs.getInt("id");
 			int id_produto = rs.getInt("id_produto");
-			String cliente_string = rs.getString("cliente");
 			int qnt = rs.getInt("qnt");
-			Cliente c = (Cliente) BaseDados.buscarUsuario_login(cliente_string);
 			
-			if (cliente.getLogin().equals(c.getLogin())) {
-				Pedido p = new Pedido(id_produto, qnt, cliente);
-				p.setId(id);
-				data.add(p);	
-			}
+			Pedido p = new Pedido(id_produto, qnt, cliente);
+			p.setId(id);
+			data.add(p);	
 		}
 		
 		this.conexao.close();

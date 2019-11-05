@@ -11,4 +11,8 @@ public interface IDaoUsuarios {
 	
 	public ArrayList<Usuario> dataUsuarios() throws SQLException;
 	
+	public void edit(Usuario usuario, String login, String senha) throws SQLException;
+	
+	public void deletar(Usuario usuario) throws SQLException;
+	
 }

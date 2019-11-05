@@ -85,6 +85,42 @@ public class DaoUsuarios implements IDaoUsuarios {
 		
 		return data;
 	}
+
+
+
+	@Override
+	public void edit(Usuario usuario, String login, String senha) throws SQLException {
+		
+		this.conexao = SQLConnection.getConnectionInstance(SQLConnection.NOME_BD_CONNECTION_POSTGRES);
+        this.preparedstatement = conexao.prepareStatement(SQLUtil.Usuarios.EDIT_ALL);
+        
+        preparedstatement.setString(1, login);
+        preparedstatement.setString(2, senha);
+        preparedstatement.setInt(3, usuario.getId());
+        
+        
+        preparedstatement.execute();
+        
+        this.conexao.close();
+		
+	}
+
+
+
+	@Override
+	public void deletar(Usuario usuario) throws SQLException {
+		
+		this.conexao = SQLConnection.getConnectionInstance(SQLConnection.NOME_BD_CONNECTION_POSTGRES);
+        this.preparedstatement = conexao.prepareStatement(SQLUtil.Usuarios.DELETE_USUARIO);
+        
+        preparedstatement.setInt(1, usuario.getId());
+        
+        
+        preparedstatement.execute();
+        
+        this.conexao.close();
+		
+	}
 	
 	
 	

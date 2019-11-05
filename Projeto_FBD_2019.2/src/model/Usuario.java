@@ -4,7 +4,7 @@ package model;
 public abstract class Usuario {
 	
 	private String login, senha;
-	private String tipo; //ADM, Cliente, Caixa, Fornecedor
+	private String TIPO; //ADM, Cliente, Caixa, Fornecedor
 	private int id;
 	private boolean logado=false;
 
@@ -12,7 +12,7 @@ public abstract class Usuario {
 	public Usuario(String login, String senha, String tipo) {
 		this.login = login;
 		this.senha = senha;
-		this.tipo = tipo;
+		this.TIPO = tipo;
 	}
 
 	public String getLogin() {
@@ -32,11 +32,11 @@ public abstract class Usuario {
 	}
 
 	public String getTipo() {
-		return tipo;
+		return TIPO;
 	}
 
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.TIPO = tipo;
 	}
 
 	public boolean isLogado() {
